@@ -8,15 +8,15 @@ jobs:
                 steps:
                         - uses: actions/checkout@v2
                         - name: Setup Python
-                          actions: actions/setup-python@v2
+                          uses: actions/setup-python@v2
                           with:
                                   python-version: 3.9
                                   architecture: x64
                         - name: Install Poetry
-                          actions: pip install poetry
+                          run: pip install poetry
 
                         - name: Install Module
-                          actions: poetry install
+                          run: poetry install
 
                         - name: Run Day 1
-                          actions: poetry run python advent_of_code/day_1/__init__.py
+                          run: poetry run python advent_of_code/day_1/__init__.py
