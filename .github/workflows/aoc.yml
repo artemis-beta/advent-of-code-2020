@@ -1,0 +1,20 @@
+name: Advent of Code 2020
+on: [push]
+
+jobs:
+        build:
+                steps:
+                        - uses: actions/checkout@v2
+                        - name: Setup Python
+                          actions: actions/setup-python@v2
+                          with:
+                                  python-version: 3.9
+                                  architecture: x64
+                        - name: Install Poetry
+                          actions: pip install poetry
+
+                        - name: Install Module
+                          actions: poetry install
+
+                        - name: Run Day 1
+                          actions: poetry run python advent_of_code/day_1/__init__.py
