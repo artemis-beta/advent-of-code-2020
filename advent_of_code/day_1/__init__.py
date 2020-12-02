@@ -1,3 +1,13 @@
+#############################################################################################
+#                                                                                           #
+#                               ADVENT OF CODE 2020: Day 1                                  #
+#                                                                                           #
+#   @author :   K. Zarebski                                                                 #
+#   @date   :   last modified 2020-12-02                                                    #
+#                                                                                           #
+#############################################################################################
+
+
 from itertools import combinations
 from typing import List, Tuple
 from functools import reduce
@@ -32,7 +42,17 @@ def get_numbers_totalling_N(numbers: List[int], total_N: int, n_numbers: int) ->
     raise ValueError(f"Could not find subset which summates to {total_N}")
 
 
-def tidy_data(input_file: str):
+def tidy_data(input_file: str) -> List[int]:
+    '''
+    Convert list of single values in a text file to a list of integers
+    
+
+    Arguments
+    ---------
+
+    input_file  address of input text file
+
+    '''
     if not os.path.exists(input_file):
         raise FileNotFoundError(f"File '{input_file}' not found")
 
@@ -64,7 +84,7 @@ Out of the values contained within: '{DATA_INPUT}'
 for the two cases of which subsets of 2 and 3 total 2020:
 
     - Values {candidates_2} total 2020, and give the product: {prod_2}
-    - Values {candidates_3} total 2020, and give the prodict: {prod_3}
+    - Values {candidates_3} total 2020, and give the product: {prod_3}
 
     '''
 
