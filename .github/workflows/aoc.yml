@@ -3,6 +3,8 @@ on: [push]
 
 jobs:
         build:
+                name: Run Ubuntu Python3.9
+                runs-on: ubuntu-latest
                 steps:
                         - uses: actions/checkout@v2
                         - name: Setup Python
