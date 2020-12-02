@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "advent_of_code"
+version = "0.1.0"
+description = "Solutions to the challenges set in Advent of Code 2020"
+authors = ["Kristian Zarebski <krizar312@gmail.com>"]
+license = "GPL-v3"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
