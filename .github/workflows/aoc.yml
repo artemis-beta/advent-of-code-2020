@@ -23,3 +23,6 @@ jobs:
 
                         - name: Run Day 2
                           run: poetry run python advent_of_code/day_2/__init__.py
+
+                        - name: Run Day 3
+                          run: poetry run python advent_of_code/day_3/__init__.py
