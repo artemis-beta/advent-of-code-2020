@@ -18,6 +18,9 @@ jobs:
                         - name: Install Module
                           run: poetry install
 
+                        - name: Run Unit Tests
+                          run: poetry run pytest
+
                         - name: Run Day 1
                           run: poetry run python advent_of_code/day_1/__init__.py
 
@@ -29,3 +32,6 @@ jobs:
 
                         - name: Run Day 4
                           run: poetry run python advent_of_code/day_4/__init__.py
+
+                        - name: Run Day 5
+                          run: poetry run python advent_of_code/day_5/__init__.py
