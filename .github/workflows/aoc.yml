@@ -35,3 +35,6 @@ jobs:
 
                         - name: Run Day 5
                           run: poetry run python advent_of_code/day_5/__init__.py
+
+                        - name: Run Day 6
+                          run: poetry run python advent_of_code/day_6/__init__.py

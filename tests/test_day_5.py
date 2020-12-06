@@ -1,6 +1,8 @@
 import pytest
 from advent_of_code.day_5 import process_seat_code
 
+
+@pytest.mark.day5
 def test_seat_binary_search():
     examples = [
         {'alloc': 'FBFBBFFRLR', 'loc': (44, 5)},
