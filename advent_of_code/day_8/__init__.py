@@ -9,7 +9,7 @@
 
 import os
 from termcolor import colored
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from random import choice
 
 BOOT_SCRIPT = os.path.join(os.path.dirname(__file__), 'data.txt')
@@ -80,7 +80,7 @@ def run_lines(script_lines: List[str], test:bool = False, quiet: bool = False) -
         
     return accumulator
 
-def run_boot_sequence(boot_config: str) -> None:
+def run_boot_sequence(boot_config: Optional[str] = BOOT_SCRIPT) -> None:
     '''
     Run the startup procedure using a given boot script
 
@@ -101,7 +101,7 @@ def run_boot_sequence(boot_config: str) -> None:
             return
     print(f"[ {colored('ok', 'green')} ] Accumulator set to value {_accumulator}")
 
-def repair_boot_config(boot_script_lines: List[str]) -> int:
+def repair_boot_config(boot_script_lines: List[str]) -> Tuple[List[str], int]:
     '''
     Attempt a repair of the boot config script by switching jmp <-> nop statements
 
@@ -109,6 +109,13 @@ def repair_boot_config(boot_script_lines: List[str]) -> int:
     ---------
 
     boot_script_lines       boot command lines from a run script
+
+
+    Returns
+    -------
+
+    If successful, returns a tuple containing the corrected boot file lines and
+    the final value of the allocator
 
     '''
     _accumulator = None
@@ -124,7 +131,7 @@ def repair_boot_config(boot_script_lines: List[str]) -> int:
         except RuntimeError:
             _lines_copy = [m for m in boot_script_lines]
             continue
-    return _accumulator
+    return _lines_copy, _accumulator
 
 def fix_boot_sequence(boot_config: Optional[str] = BOOT_SCRIPT) -> None:
     '''
@@ -141,7 +148,7 @@ def fix_boot_sequence(boot_config: Optional[str] = BOOT_SCRIPT) -> None:
     if not os.path.exists(boot_config):
         raise FileNotFoundError(f"Could not locate file '{boot_config}'")
 
-    _accumulator = repair_boot_config(open(boot_config).readlines())
+    _fixed_script, _accumulator = repair_boot_config(open(boot_config).readlines())
 
     with open(boot_config) as f:
         _lines = f.readlines()
@@ -150,7 +157,7 @@ def fix_boot_sequence(boot_config: Optional[str] = BOOT_SCRIPT) -> None:
         print("Error: System boot could not be repaired, shutting down...")
         exit()
     print("Success: System boot repaired, rebooting...\n")
-    _accumulator = run_lines(_lines_copy)
+    _accumulator = run_lines(_fixed_script)
     print(f"[ {colored('ok', 'green')} ] Accumulator set to value {_accumulator}")
 
 if __name__ in "__main__":
