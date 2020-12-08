@@ -14,4 +14,4 @@ def test_bootup(boot_config):
 
 @pytest.mark.day8
 def test_boot_repair(boot_config):
-    assert repair_boot_config(boot_config) == 8
+    assert repair_boot_config(boot_config)[1] == 8
