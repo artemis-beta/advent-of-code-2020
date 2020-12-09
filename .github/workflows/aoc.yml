@@ -44,3 +44,6 @@ jobs:
 
                         - name: Run Day 8
                           run: poetry run python advent_of_code/day_8/__init__.py
+
+                        - name: Run Day 9
+                          run: poetry run python advent_of_code/day_9/__init__.py
