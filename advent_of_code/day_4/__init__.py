@@ -31,8 +31,12 @@ def passport_validator(passport_data: Dict[str, str], rules_dict: Dict[str, Dict
     True if all conditions are satisfied else False
 
     '''
+
     if not all(i in passport_data for i in rules_dict):
         return False
+
+    if isinstance(rules_dict, list):
+        return True
 
     for key in rules_dict:
         if not rules_dict[key]['rule'](passport_data[key]):
