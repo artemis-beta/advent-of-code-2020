@@ -9,7 +9,6 @@
 
 import os
 import re
-import sympy
 from typing import Dict, Any, List, Iterable
 
 LINE_REGEX = re.compile(r'^([a-z\s]+) bags contain (.+)', re.IGNORECASE)

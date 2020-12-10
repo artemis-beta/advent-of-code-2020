@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "advent_of_code"
-version = "0.1.0"
+version = "10.1.0"
 description = "Solutions to the challenges set in Advent of Code 2020"
 authors = ["Kristian Zarebski <krizar312@gmail.com>"]
 license = "GPL-v3"
@@ -10,7 +10,6 @@ python = "^3.7"
 pandas = "^1.1.4"
 tabulate = "^0.8.7"
 termcolor = "^1.1.0"
-sympy = "^1.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
