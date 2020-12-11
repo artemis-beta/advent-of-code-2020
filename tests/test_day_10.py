@@ -1,6 +1,6 @@
 import pytest
 import os
-from advent_of_code.day_10 import get_prod_jolt_sums
+from advent_of_code.day_10 import get_prod_jolt_sums, get_n_distinct
 
 
 @pytest.fixture
@@ -24,3 +24,12 @@ def test_1_3_prod1(data_1):
 def test_1_3_prod2(data_2):
     assert get_prod_jolt_sums(data_2) == 220
 
+
+@pytest.mark.day10
+def test_ndistinct1(data_1):
+    assert get_n_distinct(data_1) == 8
+
+
+@pytest.mark.day10
+def test_ndistinct2(data_2):
+    assert get_n_distinct(data_2) == 19208

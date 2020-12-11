@@ -10,6 +10,7 @@
 import os
 from typing import List, Tuple, Dict
 from functools import reduce
+from scipy.stats import binom
 from operator import mul
 
 
@@ -43,6 +44,9 @@ def get_prod_jolt_sums(data_input: List[str], device_joltage_diff = 3) -> int:
 
     return reduce(mul, _count_dict.values(), 1)
 
+def get_n_distinct(data_input: List[str], permitted_intervals=[1,2,3]) -> int:
+    _data = sorted(int(i.strip()) for i in data_input)
+
 
 def process_file(data_input: str, device_joltage_diff: int) -> int:
     if not os.path.exists(data_input):
@@ -59,6 +63,7 @@ if __name__ in "__main__":
     DEVICE_DIFF = 3
 
     _distribution = process_file(DATA_FILE, DEVICE_DIFF)
+    _n_combos = get_n_distinct(open(DATA_FILE).readlines())
 
     print(f'''
 =================================================================
@@ -71,5 +76,7 @@ if __name__ in "__main__":
 =================================================================
 
 The product of all differences is   :   {_distribution}
+
+Number of combinations for device   :   {_n_combos}
 
     ''')
