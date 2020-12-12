@@ -163,9 +163,13 @@ def process_file(data_input: str, device_joltage_diff: int) -> int:
 if __name__ in "__main__":
     DATA_FILE = os.path.join(os.path.dirname(__file__), 'data.txt')
     DEVICE_DIFF = 3
+    PERMITTED_INTERVALS=[1,2,3]
 
     _distribution = process_file(DATA_FILE, DEVICE_DIFF)
-    _n_combos = get_n_distinct(open(DATA_FILE).readlines())
+    _n_combos = get_n_distinct(
+        open(DATA_FILE).readlines(),
+        PERMITTED_INTERVALS
+    )
 
     print(f'''
 =================================================================
@@ -174,6 +178,7 @@ if __name__ in "__main__":
 
     Input File                  :   {DATA_FILE}
     Device Joltage Difference   :   {DEVICE_DIFF}
+    Permitted Joltage Intervals :   {PERMITTED_INTERVALS}
 
 =================================================================
 
